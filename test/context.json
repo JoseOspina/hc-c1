@@ -5,34 +5,76 @@
       "Zome": "context",
       "FnName": "contextCreate",
       "Input": {
-        "name": "My cool apartment",
-        "description": "This is my nice apartment"
+        "name": "My cool apartment"
       },
-      "Output": "%h%"
+      "Output": "%h6%"
     },
     {
       "Convey": "auto-generated test for contextRead",
       "Zome": "context",
       "FnName": "contextRead",
-      "Input": "%h%",
+      "Input": "%h6%",
       "Output": {
-        "name": "My cool apartment",
-        "description": "This is my nice apartment"
+        "name": "My cool apartment"
       }
     },
     {
       "Convey": "auto-generated test for addMember",
       "Zome": "context",
       "FnName": "addMember",
-      "Input": "",
-      "Output": {}
+      "Input": {
+        "contextHash": "%h%",
+        "memberHash": "%h%"
+      },
+      "Output": true
+    },
+    {
+      "Convey": "auto-generated test for removeMember",
+      "Zome": "context",
+      "FnName": "removeMember",
+      "Input": {
+        "contextHash": "%h%",
+        "memberHash": "%h%"
+      },
+      "Output": true
     },
     {
       "Convey": "auto-generated test for addContextChild",
       "Zome": "context",
       "FnName": "addContextChild",
-      "Input": "",
-      "Output": {}
+      "Input": {
+        "parentContextHash": "%h%",
+        "childContextHash": "%h%"
+      },
+      "Output": true
+    },
+    {
+      "Convey": "auto-generated test for removeContextChild",
+      "Zome": "context",
+      "FnName": "removeContextChild",
+      "Input": {
+        "parentContextHash": "%h%",
+        "childContextHash": "%h%"
+      },
+      "Output": true
+    }
+    ,
+    {
+      "Convey": "auto-generated test for removeContextChild",
+      "Zome": "context",
+      "FnName": "listContextChilds",
+      "Input": {
+        "parentContextHash": "%h%",
+        "childContextHash": "%h%"
+      },
+      "Output": []
+    }
+    ,
+    {
+      "Convey": "auto-generated test for removeContextChild",
+      "Zome": "context",
+      "FnName": "listMyContexts",
+      "Output": []
     }
   ]
 }

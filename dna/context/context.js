@@ -15,9 +15,9 @@ function contextCreate(contextEntry) {
   var contextHash = commit('context', contextEntry);
 
   var anchorHash = anchor('context', contextHash);
-  commit('context', {
+  commit('contextAnchor', {
     Links: [
-      { Base: anchorHash, Link: params.contextHash, Tag: 'contextAnchor' }
+      { Base: anchorHash, Link: contextHash, Tag: 'context' }
     ]
   });
 
@@ -41,7 +41,7 @@ function addMember(params) {
   });
   commit('member', {
     Links: [
-      { Base: params.memberHash, Link: params.contextHash, Tag: 'member' }
+      { Base: params.memberHash, Link: params.contextHash, Tag: 'member_of' }
     ]
   });
   return true;
@@ -67,7 +67,7 @@ function removeMember(params) {
       {
         Base: params.memberHash,
         Link: params.contextHash,
-        Tag: 'member',
+        Tag: 'member_of',
         LinkAction: HC.LinkAction.Del
       }
     ]
@@ -78,7 +78,7 @@ function removeMember(params) {
 /**
  * @param parentContextHash
  */
-function listContextChild(params) {
+function listContextChilds(params) {
   return getLinks(params.parentContextHash, 'contextChild', { Load: true });
 }
 
