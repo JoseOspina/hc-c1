@@ -31,7 +31,7 @@
           "Sharing": "public"
         },
         {
-          "Name": "members",
+          "Name": "member",
           "Required": true,
           "DataFormat": "links",
           "Sharing": "public"
@@ -60,12 +60,27 @@
           "Exposure": "public"
         },
         {
+          "Name": "removeMember",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
           "Name": "listContextChilds",
           "CallingType": "json",
           "Exposure": "public"
         },
         {
+          "Name": "listMyContexts",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
           "Name": "addContextChild",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "removeContextChild",
           "CallingType": "json",
           "Exposure": "public"
         }
