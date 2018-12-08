@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import { spliceString } from '@/lib/common.js'
-
 export default {
   props: {
     value: {

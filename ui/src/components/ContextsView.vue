@@ -7,6 +7,17 @@
     </transition>
 
     <div class="content-container-cell">
+      <div class="w3-row control-buttons-row">
+        <div @click="$emit('messages')" class="w3-left control-btn" :class="{'control-btn-selected': isMessages}">
+          <img src="./../assets/chat-icon-2.svg" alt="">
+        </div>
+        <div @click="$emit('content')" class="w3-left control-btn" :class="{'control-btn-selected': isContent}">
+          <img src="./../assets/doc-icon.svg" alt="">
+        </div>
+        <div @click="$emit('assets')" class="w3-left control-btn" :class="{'control-btn-selected': isAssets}">
+          <img src="./../assets/exchange-icon.svg" alt="">
+        </div>
+      </div>
       <router-view></router-view>
     </div>
   </div>
@@ -20,6 +31,18 @@ export default {
 
   components: {
     'app-contexts-nav': ContextsNav
+  },
+
+  computed: {
+    isMessages () {
+      return this.$route.name === 'ContextMessages'
+    },
+    isContent () {
+      return this.$route.name === 'ContextContent'
+    },
+    isAssets () {
+      return this.$route.name === 'ContextAssets'
+    }
   }
 }
 </script>
@@ -38,6 +61,14 @@ export default {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+.control-buttons-row {
+  padding: 6px 6px;
+}
+
+.control-btn {
+  margin-left: 6px;
 }
 
 .nav-container-cell {

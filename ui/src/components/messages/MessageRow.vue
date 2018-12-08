@@ -2,7 +2,6 @@
   <div class="w3-row message-row">
     <div class="author-div">
       <img class="w3-circle avatar-image" :src="message.author.pictureUrl">
-      </img>
     </div>
     <div class="text-div">
       {{ message.text }}

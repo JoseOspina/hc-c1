@@ -66,7 +66,7 @@ export default {
         }
       ]
     },
-    send (data) {}
+    send () {}
   },
 
   mounted () {
