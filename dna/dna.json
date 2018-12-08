@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "UUID": "af4f3b84-e76e-4d60-9c34-d69e3e73cfcf",
+  "Name": "collective",
+  "Properties": {
+    "description": "",
+    "language": "en"
+  },
+  "PropertiesSchemaFile": "properties_schema.json",
+  "DHTConfig": {
+    "HashType": "sha2-256"
+  },
+  "Zomes": [
+    {
+      "Name": "context",
+      "Description": "",
+      "RibosomeType": "js",
+      "CodeFile": "context.js",
+      "Entries": [
+        {
+          "Name": "context",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "context.json"
+        },
+        {
+          "Name": "contextAnchor",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        },
+        {
+          "Name": "members",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        },
+        {
+          "Name": "contextChild",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "contextCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "contextRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "addMember",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "listContextChilds",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "addContextChild",
+          "CallingType": "json",
+          "Exposure": "public"
+        }
+      ]
+    },
+    {
+      "Name": "anchors",
+      "Description": "anchors mixin",
+      "RibosomeType": "js",
+      "CodeFile": "anchors.js",
+      "Config": {
+        "ErrorHandling": "throwErrors"
+      },
+      "Entries": [
+        {
+          "Name": "anchor",
+          "DataFormat": "json",
+          "SchemaFile": "anchor.json",
+          "Sharing": "public"
+        },
+        {
+          "Name": "anchor_link",
+          "DataFormat": "links"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "anchor",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "exists",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "anchors",
+          "CallingType": "string",
+          "Exposure": "public"
+        }
+      ]
+    }
+  ]
+}
