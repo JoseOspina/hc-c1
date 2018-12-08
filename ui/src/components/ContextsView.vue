@@ -6,12 +6,8 @@
       </div>
     </transition>
 
-    <div class="w3-row content-container-cell">
-      <div class="slider-container">
-        <transition name="slideDownUp" mode="out-in">
-          content
-        </transition>
-      </div>
+    <div class="content-container-cell">
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -33,11 +29,13 @@ export default {
 
 .contexts-row {
   height: 100vh;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
 }
 
 .content-container-cell {
   height: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
