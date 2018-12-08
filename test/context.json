@@ -1,0 +1,38 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for contextCreate",
+      "Zome": "context",
+      "FnName": "contextCreate",
+      "Input": {
+        "name": "My cool apartment",
+        "description": "This is my nice apartment"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for contextRead",
+      "Zome": "context",
+      "FnName": "contextRead",
+      "Input": "%h%",
+      "Output": {
+        "name": "My cool apartment",
+        "description": "This is my nice apartment"
+      }
+    },
+    {
+      "Convey": "auto-generated test for addMember",
+      "Zome": "context",
+      "FnName": "addMember",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for addContextChild",
+      "Zome": "context",
+      "FnName": "addContextChild",
+      "Input": "",
+      "Output": {}
+    }
+  ]
+}
