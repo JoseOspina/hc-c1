@@ -11,3 +11,11 @@
 .cursor-pointer {
   cursor: pointer !important;
 }
+
+.app-button {
+  background-color: #15a5cc !important;
+  color: white;
+  border-radius: 12px;
+  line-height: 16px;
+  transition:all 0.3s ease-out;
+}

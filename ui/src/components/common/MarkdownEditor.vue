@@ -10,9 +10,6 @@
           v-model="text"
           :placeholder="placeholder">
         </textarea>
-        <div class="this-markdown">
-          <vue-markdown class="marked-text" :source="text" :anchorAttributes="{target: '_blank'}"></vue-markdown>
-        </div>
       </div>
     </div>
     <div class="w3-cell send-button-column w3-cell-top">
@@ -52,7 +49,8 @@ export default {
 
   data () {
     return {
-      text: ''
+      text: '',
+      sending: false
     }
   },
 
@@ -124,26 +122,14 @@ export default {
 
 <style scoped>
 
+.editor-container {
+  padding: 12px 12px;
+}
+
 .this-textarea {
   max-height: 50vh;
+  min-height: 75px;
   overflow-y: auto !important;
-}
-
-.this-textarea, .this-markdown {
-  min-height: 68px;
-}
-
-.buttons-column {
-  width: 32px;
-  height: 100%;
-  padding: 0px !important;
-}
-
-.a-button {
-  width: 32px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  margin-bottom: 1px;
 }
 
 .send-button-column {
@@ -163,62 +149,8 @@ export default {
   width: 35px;
 }
 
-.markdown-container {
-  font-family: 'Open Sans', sans-serif;
-}
-
 .w3-cell-top {
   vertical-align: bottom;
 }
 
-.editor-container {
-  position: relative;
-}
-
-.mentions-row {
-  font-size: 12px;
-}
-
-.dropup {
-  position: relative;
-  width: 100%
-}
-
-.dropup-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  width: 790px;
-  bottom: 0px;
-  z-index: 1;
-}
-
-.dropup-content div {
-  color: black;
-  padding: 6px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropup-content div:hover {
-  background-color: #ccc
-}
-
-.dropup .dropup-content {
-    display: block; /*triggers to showList*/
-}
-
-.mentionedUsers {
-   padding: 0px 10px !important;
-   margin-left: 5px;
-   border-radius: 3px;
-}
-
-.mentionedUsersClose {
-   padding: 0px 10px !important;
-}
-
-.mentionedUsersClose:hover {
-  color: #C0C0C0;
-}
 </style>

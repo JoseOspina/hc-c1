@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="thread-container">
-    <div class="w3-row history-container w3-border" >
-      <app-message-row v-for="message in messages">
+    <div class="w3-row history-container" >
+      <app-message-row v-for="message in messages" :key="message.id" :message="message">
       </app-message-row>
     </div>
     <div class="w3-row w3-margin-top bottom-container">
       <app-markdown-editor
         class="editor-container"
         v-model="newMessageText"
-        :placeholder="$t('notifications.SAY_SOMETHING')"
+        placeholder="say something"
         :elementId="contextElementId"
         @send="send($event)">
       </app-markdown-editor>
@@ -17,8 +17,12 @@
 </template>
 
 <script>
+import MessageRow from '@/components/messages/MessageRow.vue'
+
 export default {
-  components: {},
+  components: {
+    'app-message-row': MessageRow
+  },
 
   props: {
     contextType: {
@@ -47,15 +51,27 @@ export default {
         {
           id: '21312534654645',
           author: {
-            nickname: 'joe'
+            nickname: 'joe',
+            pictureUrl: 'https://openclipart.org/image/2400px/svg_to_png/277089/Female-Avatar-5.png'
           },
+          text: 'Hi everyone, hows are things going?'
+        },
+        {
+          id: '234353452432',
+          author: {
+            nickname: 'emy',
+            pictureUrl: 'https://cdn2.iconfinder.com/data/icons/the-world-faces/512/Cool_Guy_Face_Avatar-512.png'
+          },
+          text: 'Hi emily, great!'
         }
       ]
     },
     send (data) {}
   },
 
-  mounted () {},
+  mounted () {
+    this.getMessages()
+  },
 
   destroyed () {}
 }
@@ -65,7 +81,6 @@ export default {
 
 .thread-container {
   height: 100%;
-  max-height: 100vh;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -80,21 +95,6 @@ export default {
 .bottom-container {
   min-height: 50px;
   flex-shrink: 0;
-}
-
-.only-messages-button {
-  margin-right: 25px;
-  margin-top: 10px;
-}
-
-.tooltip .tooltiptext {
-  top: 8%;
-  right: 105%;
-  background: blue;
-}
-
-.only-messages-button button {
-  background-color: rgba(21, 165, 204, 0.4) !important;
 }
 
 </style>
