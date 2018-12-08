@@ -8,6 +8,9 @@
 //  Exposed functions with custom logic https://developer.holochain.org/API_reference
 // -----------------------------------------------------------------
 
+/**
+ * @param context with the form { name: 'mycontexts' }
+ */
 function contextCreate(contextEntry) {
   var contextHash = commit('context', contextEntry);
 
