@@ -16,15 +16,15 @@ function contextCreate(contextEntry) {
 
   var anchorHash = anchor('context', contextHash);
   commit('contextAnchor', {
-    Links: [{ Base: anchorHash, Link: contextHash, Tag: 'context' }]
+    Links: [{ Base: anchorHash, Link: contextHash, Tag: 'contextAnchor' }]
   });
 
-  return contextHash;
+  return anchorHash;
 }
 
-function contextRead(contextHash) {
-  var context = get(contextHash);
-  return context;
+function contextRead(anchorHash) {
+  var contextHashes = getLinks(anchorHash, 'contextAnchor', { Load: true });
+  return get(contextHashes[0].Hash);
 }
 
 /**

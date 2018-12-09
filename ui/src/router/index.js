@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const ContextsView = () => import('@/components/ContextsView.vue')
+const ContextView = () => import('@/components/ContextView.vue')
 const ContextMessages  = () => import('@/components/ContextMessages.vue')
 const ContextAssets = () => import('@/components/ContextAssets.vue')
 
@@ -14,18 +15,24 @@ export default new Router({
       path: '/',
       name: 'ContextsView',
       component: ContextsView,
-      children: [
-        {
-          path: 'messages',
-          name: 'ContextMessages',
-          component: ContextMessages
-        },
-        {
-          path: 'assets',
-          name: 'assets',
-          component: ContextAssets
-        }
-      ]
+      children: [{
+        path: 'context/:id',
+        name: 'context',
+        component: ContextView,
+        redirect: { name: 'ContextMessages' },
+        children: [
+          {
+            path: 'messages',
+            name: 'ContextMessages',
+            component: ContextMessages
+          },
+          {
+            path: 'assets',
+            name: 'ContextAssets',
+            component: ContextAssets
+          }
+        ]
+      }]
     }
   ]
 })

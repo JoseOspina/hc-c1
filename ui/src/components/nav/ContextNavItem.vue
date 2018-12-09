@@ -8,7 +8,9 @@
           #
         </div>
         <div class="title-div cursor-pointer noselect">
-          {{ contextTitle }}
+          <router-link tag="span" :to="'/context/' + contextId">
+            {{ contextTitle }}
+          </router-link>
         </div>
       </div>
 
@@ -49,6 +51,10 @@ export default {
   computed: {
     contextTitle () {
       return this.contextData.context.title
+    },
+
+    contextId () {
+      return this.contextData.context.id
     },
 
     subcontextsData () {
