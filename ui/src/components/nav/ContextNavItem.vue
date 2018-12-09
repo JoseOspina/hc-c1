@@ -8,7 +8,7 @@
           #
         </div>
         <div class="title-div cursor-pointer noselect">
-          {{ contextTitle }}
+          {{ contextName }}
         </div>
       </div>
 
@@ -47,8 +47,8 @@ export default {
   },
 
   computed: {
-    contextTitle () {
-      return this.contextData.context.title
+    contextName () {
+      return this.contextData.context.name
     },
 
     subcontextsData () {

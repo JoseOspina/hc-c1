@@ -25,7 +25,16 @@ export default {
   },
 
   created () {
-    this.$store.dispatch('resetContextsTree', { baseContextId: })
+    this.axios.post('/fn/context/getRootContext').then(response => {
+      if (response.status === 200) {
+        let myRootContextHash = response.data[0].Hash
+        console.log('root context received ' + myRootContextHash)
+        this.$store.dispatch('resetContextsTree', { baseContextHash: myRootContextHash })
+      } else {
+        console.log('error getting root context')
+        console.log(response)
+      }
+    })
   }
 }
 </script>

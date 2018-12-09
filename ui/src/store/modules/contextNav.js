@@ -37,7 +37,7 @@ const mutations = {
           coordinate: [0],
           inContext: null,
           context: payload.contextData.context,
-          contextsData: payload.contextData.subcontextsData,
+          subcontextsData: payload.contextData.subcontextsData,
           contextsDataSet: true,
           expand: true
         }]
@@ -90,9 +90,9 @@ const mutations = {
 
 const actions = {
   resetContextsTree: (context, payload) => {
-    console.log('reseting contextData ' + payload.baseContextId)
+    console.log('reseting contextData ' + payload.baseContextHash)
     context.dispatch('fetchContextData', {
-      contextId: payload.baseContextId,
+      contextHash: payload.baseContextHash,
       coord: [0]
     }).then(() => {
       // context.dispatch('updateCurrentContext', payload.currentContextId)
@@ -101,51 +101,42 @@ const actions = {
 
   /* This will add a context and their immediate subcontexts at a given coordinate.
   Its an asynchronoues method that gets the data from the backend */
-  fetchContextData: (context, payload) => {
-    return new Promise((resolve, reject) => {
-      console.log('appending contextData ' + payload.contextId)
-      Vue.axios.get('/1/model/context/' + payload.contextId,
-        {
-          params: {
-            levels: 2,
-            parentContextId: payload.parentContextId ? payload.parentContextId : '',
-            onlyContexts: true
-          }
-        }).then((response) => {
-          if (response.data.result === 'success') {
-            let context = response.data.data
-            // console.log(context)
+  fetchContextData: (vuexContext, payload) => {
+    return new Promise( (resolve, reject) => {
+      console.log('appending contextData ' + payload.contextHash)
+      let context = {}
 
-            /* sort subcontexts for this user */
-            let subcontexts = context.subcontexts
+      Vue.axios.post('/fn/context/contextRead', JSON.stringify(payload.contextHash))
+      .then(response => {
+        if (response.status == 200) {
+          context.hash = payload.contextHash
+          context.name = response.data.name
 
-            let subcontextsData = []
-
-            for (let ix = 0; ix < subcontexts.length; ix++) {
-              subcontextsData.push({
-                coordinate: payload.coord.concat(ix),
-                inContext: context,
-                context: subcontexts[ix],
-                subcontextsData: [],
-                subcontextsDataSet: false,
-                expand: false
+          Vue.axios.post('/fn/context/listContextChilds', JSON.stringify({
+            parentContextHash: context.hash
+          })).then( response => {
+            if (response.status == 200) {
+              console.log(response.data)
+              let subcontexts = response.data
+              vuexContext.commit('appendContextDataCommit', {
+                contextData: {
+                  context: context,
+                  subcontextsData: subcontexts,
+                },
+                coord: payload.coord
               })
+              resolve()
+            } else {
+              console.log('error reading context children')
+              console.log(response)
+              reject()
             }
-
-            let contextData = {
-              context: context,
-              subcontextsData: subcontextsData
-            }
-
-            context.commit('appendContextDataCommit', {
-              contextData: contextData,
-              coord: payload.coord
-            })
-
-            resolve()
-          } else {
-            reject()
-          }
+          })
+        } else {
+          console.log('error reading context')
+          console.log(response)
+          reject()
+        }
       })
     })
   },
@@ -164,7 +155,7 @@ const actions = {
     if (!contextData.subcontextsDataSet) {
       context.dispatch('fetchContextData', {
         parentContextId: contextData.inContext.id,
-        contextId: contextData.context.id,
+        contextHash: contextData.context.id,
         coord: coord
       })
     }
@@ -174,7 +165,7 @@ const actions = {
       if (!contextData.subcontextsData[ix].subcontextsDataSet) {
         console.log('preloading ' + contextData.subcontextsData[ix].context.title + ' id: ' + contextData.subcontextsData[ix].context.id)
         context.dispatch('fetchContextData', {
-          contextId: contextData.subcontextsData[ix].context.id,
+          contextHash: contextData.subcontextsData[ix].context.id,
           parentContextId: contextData.context.id,
           coord: coord.concat(ix)
         })
