@@ -40,7 +40,6 @@ function badgeDelete (badgeHash) {
 }
 
 function award (params) {
-  debug(params)
   commit('badgeAward', {
     Links: [
       { Base: params.badgeHash, Link: params.targetHash, Tag: 'badgeAward' }
@@ -50,8 +49,12 @@ function award (params) {
 }
 
 function revoke (params) {
-  // your custom code here
-  return {};
+  commit('badgeAward', {
+    Links: [
+      { Base: params.badgeHash, Link: params.targetHash, Tag: 'badgeAward', LinkAction: HC.LinkAction.Del }
+    ]
+  })
+  return true;
 }
 
 function anchor(anchorType, anchorText) {

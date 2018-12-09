@@ -69,8 +69,11 @@
       "Convey": "I revoke the badge that I awarded",
       "Zome": "badges",
       "FnName": "revoke",
-      "Input": "",
-      "Output": {}
+      "Input": {
+        "badgeHash": "%h2%",
+        "targetHash": "%agent%"
+      },
+      "Output": true
     }
   ]
 }
