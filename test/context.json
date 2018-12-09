@@ -7,13 +7,13 @@
       "Input": {
         "name": "My cool apartment"
       },
-      "Output": "%h6%"
+      "Output": "%h2%"
     },
     {
       "Convey": "auto-generated test for contextRead",
       "Zome": "context",
       "FnName": "contextRead",
-      "Input": "%h6%",
+      "Input": "%h2%",
       "Output": {
         "name": "My cool apartment"
       }
@@ -67,13 +67,6 @@
         "parentContextHash": "%h%",
         "childContextHash": "%h%"
       },
-      "Output": []
-    }
-    ,
-    {
-      "Convey": "auto-generated test for removeContextChild",
-      "Zome": "context",
-      "FnName": "listMyContexts",
       "Output": []
     }
   ]

@@ -1,0 +1,132 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for transactionCreate",
+      "Zome": "currencies",
+      "FnName": "transactionCreate",
+      "Input": {
+        "from": "UserOrContextHash",
+        "to": "UserOrContextHash",
+        "type": "TypeHash",
+        "amount": 1,
+        "notes": "A simple transfer"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for receiptCreate",
+      "Zome": "currencies",
+      "FnName": "receiptCreate",
+      "Input": {
+        "txHash": "OriginalTx commit hash",
+        "signature": "RecipientSignature"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for approvalCreate",
+      "Zome": "currencies",
+      "FnName": "approvalCreate",
+      "Input": {
+        "amount": 1000,
+        "type": "Currency Type Hash",
+        "needed_signatures": 2,
+        "targets": {
+          "A": 10,
+          "B": 90
+        },
+        "signatures": [
+          "A"
+        ]
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for approvalRead",
+      "Zome": "currencies",
+      "FnName": "approvalRead",
+      "Input": "%h%",
+      "Output": {
+        "amount": 1000,
+        "type": "Currency Type Hash",
+        "needed_signatures": 2,
+        "targets": {
+          "A": 10,
+          "B": 90
+        },
+        "signatures": [
+          "A"
+        ]
+      }
+    },
+    {
+      "Convey": "auto-generated test for approvalUpdate",
+      "Zome": "currencies",
+      "FnName": "approvalUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for approvalDelete",
+      "Zome": "currencies",
+      "FnName": "approvalDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for limitCreate",
+      "Zome": "currencies",
+      "FnName": "limitCreate",
+      "Input": {
+        "total": 1000,
+        "type": "The actual currency name"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for limitRead",
+      "Zome": "currencies",
+      "FnName": "limitRead",
+      "Input": "%h%",
+      "Output": {
+        "total": 1000,
+        "type": "The actual currency name"
+      }
+    },
+    {
+      "Convey": "auto-generated test for limitUpdate",
+      "Zome": "currencies",
+      "FnName": "limitUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for limitDelete",
+      "Zome": "currencies",
+      "FnName": "limitDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for transfer",
+      "Zome": "currencies",
+      "FnName": "transfer",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for confirm",
+      "Zome": "currencies",
+      "FnName": "confirm",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for balance",
+      "Zome": "currencies",
+      "FnName": "balance",
+      "Input": "",
+      "Output": {}
+    }
+  ]
+}

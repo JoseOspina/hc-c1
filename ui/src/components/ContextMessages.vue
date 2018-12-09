@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="context-messages-container">
+  <div class="context-messages-container content-container-cell">
     <app-message-thread
       contextType="CONTEXT"
       :contextElementId="currentContextId">
@@ -28,9 +28,5 @@ export default {
 </script>
 
 <style scoped>
-
-.context-messages-container {
-  height: 100%;
-}
 
 </style>

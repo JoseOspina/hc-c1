@@ -3,7 +3,7 @@
   "UUID": "af4f3b84-e76e-4d60-9c34-d69e3e73cfcf",
   "Name": "collective",
   "Properties": {
-    "description": "",
+    "description": "Managing fair collective houses",
     "language": "en"
   },
   "PropertiesSchemaFile": "properties_schema.json",
@@ -11,6 +11,156 @@
     "HashType": "sha2-256"
   },
   "Zomes": [
+    {
+      "Name": "currencies",
+      "Description": "Transactions for the fungible transferable currency",
+      "RibosomeType": "js",
+      "CodeFile": "currencies.js",
+      "Entries": [
+        {
+          "Name": "transaction",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "transaction.json"
+        },
+        {
+          "Name": "receipt",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "receipt.json"
+        },
+        {
+          "Name": "approval",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "approval.json"
+        },
+        {
+          "Name": "limit",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "limit.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "transactionCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "receiptCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "approvalCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "approvalRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "approvalUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "approvalDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "limitCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "limitRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "limitUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "limitDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "transfer",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "confirm",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "balance",
+          "CallingType": "json",
+          "Exposure": "public"
+        }
+      ]
+    },
+    {
+      "Name": "badges",
+      "Description": "Management of non-fungible non-transferable badges",
+      "RibosomeType": "js",
+      "CodeFile": "badges.js",
+      "Entries": [
+        {
+          "Name": "badge",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "badge.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "badgeCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "badgeRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "badgeUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "badgeDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "award",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "revoke",
+          "CallingType": "json",
+          "Exposure": ""
+        }
+      ]
+    },
     {
       "Name": "context",
       "Description": "",
@@ -87,6 +237,70 @@
         },
         {
           "Name": "removeContextChild",
+          "CallingType": "json",
+          "Exposure": "public"
+        }
+      ]
+    },
+    {
+      "Name": "messages",
+      "Description": "Messages between users",
+      "RibosomeType": "js",
+      "CodeFile": "messages.js",
+      "Entries": [
+        {
+          "Name": "message",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "message.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "messageCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "messageRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "messageUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "messageDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        }
+      ]
+    },
+    {
+      "Name": "cards",
+      "Description": "Context cards",
+      "RibosomeType": "js",
+      "CodeFile": "cards.js",
+      "Entries": [
+        {
+          "Name": "card",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "card.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "cardCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "cardRead",
           "CallingType": "json",
           "Exposure": "public"
         }

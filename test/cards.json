@@ -1,0 +1,24 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for cardCreate",
+      "Zome": "cards",
+      "FnName": "cardCreate",
+      "Input": {
+        "card_type": "text",
+        "card_content": "The body"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for cardRead",
+      "Zome": "cards",
+      "FnName": "cardRead",
+      "Input": "%h%",
+      "Output": {
+        "card_type": "text",
+        "card_content": "The body"
+      }
+    }
+  ]
+}

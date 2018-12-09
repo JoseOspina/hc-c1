@@ -1,0 +1,89 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "amount",
+    "type",
+    "needed_signatures",
+    "targets",
+    "signatures"
+  ],
+  "properties": {
+    "amount": {
+      "$id": "#/properties/amount",
+      "type": "integer",
+      "title": "The Amount Schema",
+      "default": 0,
+      "examples": [
+        1000
+      ]
+    },
+    "type": {
+      "$id": "#/properties/type",
+      "type": "string",
+      "title": "The Type Schema",
+      "default": "",
+      "examples": [
+        "Currency Type Hash"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "needed_signatures": {
+      "$id": "#/properties/needed_signatures",
+      "type": "integer",
+      "title": "The Needed_signatures Schema",
+      "default": 0,
+      "examples": [
+        2
+      ]
+    },
+    "targets": {
+      "$id": "#/properties/targets",
+      "type": "object",
+      "title": "The Targets Schema",
+      "required": [
+        "A",
+        "B"
+      ],
+      "properties": {
+        "A": {
+          "$id": "#/properties/targets/properties/A",
+          "type": "integer",
+          "title": "The A Schema",
+          "default": 0,
+          "examples": [
+            10
+          ]
+        },
+        "B": {
+          "$id": "#/properties/targets/properties/B",
+          "type": "integer",
+          "title": "The B Schema",
+          "default": 0,
+          "examples": [
+            90
+          ]
+        }
+      }
+    },
+    "signatures": {
+      "$id": "#/properties/signatures",
+      "type": "array",
+      "title": "The Signatures Schema",
+      "items": {
+        "$id": "#/properties/signatures/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": [
+          "A",
+          "B"
+        ],
+        "pattern": "^(.*)$"
+      }
+    }
+  }
+}
