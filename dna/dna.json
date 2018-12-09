@@ -37,6 +37,12 @@
           "Sharing": "public"
         },
         {
+          "Name": "rootContext",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        },
+        {
           "Name": "contextChild",
           "Required": true,
           "DataFormat": "links",
