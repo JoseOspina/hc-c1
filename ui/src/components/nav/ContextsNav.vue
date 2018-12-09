@@ -20,32 +20,12 @@ export default {
 
   computed: {
     contextData () {
-      return {
-        context: {
-          id: '8937249372498235667498',
-          title: 'My context',
-          description: 'This is my personal context.'
-        },
-        subcontextsData: [
-          {
-            context: {
-              id: '9849845548794597845987',
-              title: 'Project 1',
-              description: 'This project is awesome.'
-            },
-            subcontextsData: []
-          },
-          {
-            context: {
-              id: '0983982348792348723487',
-              title: 'Project 2',
-              description: 'This project is also awesome.'
-            },
-            subcontextsData: []
-          }
-        ]
-      }
+      return this.$store.state.contextNav.contextsTree[0]
     }
+  },
+
+  created () {
+    this.$store.dispatch('resetContextsTree', { baseContextId: })
   }
 }
 </script>

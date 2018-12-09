@@ -13,6 +13,7 @@
     "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.2",
     "vue-store": "^0.3.1-moved",
+    "vuex": "^3.0.1",
     "w3-css": "^4.1.0"
   },
   "devDependencies": {

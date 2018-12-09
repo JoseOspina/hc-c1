@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div class="w3-row context-nav-item-container">
+  <div v-if="contextData != null" class="w3-row context-nav-item-container">
     <div class="w3-row context-nav-item-first-row">
 
       <div class="arrow-and-title">

@@ -54,7 +54,7 @@ export default {
             nickname: 'joe',
             pictureUrl: 'https://openclipart.org/image/2400px/svg_to_png/277089/Female-Avatar-5.png'
           },
-          text: 'Hi everyone, hows are things going?'
+          text: 'Hi everyone, how are things going?'
         },
         {
           id: '234353452432',
