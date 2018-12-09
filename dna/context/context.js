@@ -16,9 +16,7 @@ function contextCreate(contextEntry) {
 
   var anchorHash = anchor('context', contextHash);
   commit('contextAnchor', {
-    Links: [
-      { Base: anchorHash, Link: contextHash, Tag: 'context' }
-    ]
+    Links: [{ Base: anchorHash, Link: contextHash, Tag: 'context' }]
   });
 
   return contextHash;
@@ -85,8 +83,8 @@ function listContextChilds(params) {
 /**
  * @return my contexts
  */
-function listMyContexts() {
-  return getLinks(App.Agent.Hash, 'member', { Load: true });
+function getRootContext() {
+  return getLinks(App.Agent.Hash, 'rootContext', { Load: true });
 }
 
 /**
@@ -147,6 +145,17 @@ function anchorExists(anchorType, anchorText) {
  * @return {boolean} success
  */
 function genesis() {
+  var contextHash = contextCreate({ name: 'My contexts' });
+  commit('rootContext', {
+    Links: [
+      {
+        Base: App.Agent.Hash,
+        Link: contextHash,
+        Tag: 'rootContext'
+      }
+    ]
+  });
+
   return true;
 }
 

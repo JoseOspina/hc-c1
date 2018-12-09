@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const ContextsView = () => import('@/components/ContextsView.vue')
 const ContextMessages  = () => import('@/components/ContextMessages.vue')
+const ContextAssets = () => import('@/components/ContextAssets.vue')
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
           path: 'messages',
           name: 'ContextMessages',
           component: ContextMessages
+        },
+        {
+          path: 'assets',
+          name: 'assets',
+          component: ContextAssets
         }
       ]
     }
