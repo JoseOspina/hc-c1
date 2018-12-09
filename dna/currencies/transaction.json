@@ -1,0 +1,65 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "from",
+    "to",
+    "type",
+    "amount",
+    "notes"
+  ],
+  "properties": {
+    "from": {
+      "$id": "#/properties/from",
+      "type": "string",
+      "title": "The From Schema",
+      "default": "",
+      "examples": [
+        "UserOrContextHash"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "to": {
+      "$id": "#/properties/to",
+      "type": "string",
+      "title": "The To Schema",
+      "default": "",
+      "examples": [
+        "UserOrContextHash"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "type": {
+      "$id": "#/properties/type",
+      "type": "string",
+      "title": "The Type Schema",
+      "default": "",
+      "examples": [
+        "TypeHash"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "amount": {
+      "$id": "#/properties/amount",
+      "type": "integer",
+      "title": "The Amount Schema",
+      "default": 0,
+      "examples": [
+        1
+      ]
+    },
+    "notes": {
+      "$id": "#/properties/notes",
+      "type": "string",
+      "title": "The Notes Schema",
+      "default": "",
+      "examples": [
+        "A simple transfer"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}
