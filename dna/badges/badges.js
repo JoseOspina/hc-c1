@@ -10,18 +10,28 @@
 
 function badgeCreate (badgeEntry) {
   var badgeHash = commit("badge", badgeEntry);
-  return badgeHash;
+
+  var anchorHash = anchor("badge", badgeHash);
+  commit("badgeAnchor", {
+    Links: [{ Base: anchorHash, Link: badgeHash, Tag: "badgeAnchor" }]
+  });
+  return anchorHash;
 }
 
-function badgeRead (badgeHash) {
-  var badge = get(badgeHash);
-  return badge;
+function badgeRead (anchorHash) {
+  var badgeHashes = getLinks(anchorHash, 'badgeAnchor', { Load: true });
+  return get(badgeHashes[0].Hash);
 }
 
-function badgeUpdate (badgeHash) {
-  var sampleValue={"name":"Sustainable","description":"For being sustainable you must sustain yourself","expiration_days":365,"extraField":true};
-  var badgeOutHash = update("badge", sampleValue, badgeHash);
-  return badgeOutHash;
+function badgeUpdate (params) {
+  var anchorHash = params.anchorHash
+  var badgeHashes = getLinks(anchorHash, 'badgeAnchor', { Load: true });
+  var badgeOldHash = badgeHashes[0].Hash
+  var badgeNewHash = update("badge", params.newContent, badgeOldHash);
+  commit("badgeAnchor", {
+    Links: [{ Base: anchorHash, Link: badgeNewHash, Tag: "badgeAnchor" }]
+  });
+  return anchorHash;
 }
 
 function badgeDelete (badgeHash) {
@@ -30,8 +40,13 @@ function badgeDelete (badgeHash) {
 }
 
 function award (params) {
-  // your custom code here
-  return {};
+  debug(params)
+  commit('badgeAward', {
+    Links: [
+      { Base: params.badgeHash, Link: params.targetHash, Tag: 'badgeAward' }
+    ]
+  })
+  return true;
 }
 
 function revoke (params) {
@@ -39,6 +54,19 @@ function revoke (params) {
   return {};
 }
 
+function anchor(anchorType, anchorText) {
+  return call('anchors', 'anchor', {
+    anchorType: anchorType,
+    anchorText: anchorText
+  }).replace(/"/g, '');
+}
+
+function anchorExists(anchorType, anchorText) {
+  return call('anchors', 'exists', {
+    anchorType: anchorType,
+    anchorText: anchorText
+  });
+}
 
 // -----------------------------------------------------------------
 //  The Genesis Function https://developer.holochain.org/genesis
@@ -68,10 +96,12 @@ function genesis () {
 function validateCommit (entryName, entry, header, pkg, sources) {
   switch (entryName) {
     case "badge":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
       return true;
+    case "badgeAnchor":
+      return true;
+    case "badgeAward":
+      return true;
+
     default:
       // invalid entry name
       return false;
@@ -88,13 +118,7 @@ function validateCommit (entryName, entry, header, pkg, sources) {
  * @return {boolean} is valid?
  */
 function validatePut (entryName, entry, header, pkg, sources) {
-  switch (entryName) {
-    case "badge":
-      return true;
-    default:
-      // invalid entry name
-      return false;
-  }
+  return validateCommit (entryName, entry, header, pkg, sources);
 }
 
 /**
@@ -110,6 +134,8 @@ function validatePut (entryName, entry, header, pkg, sources) {
 function validateMod (entryName, entry, header, replaces, pkg, sources) {
   switch (entryName) {
     case "badge":
+      return true;
+    case "badgeAnchor":
       return true;
     default:
       // invalid entry name
@@ -129,6 +155,8 @@ function validateDel (entryName, hash, pkg, sources) {
   switch (entryName) {
     case "badge":
       return true;
+    case "badgeAnchor":
+      return true;
     default:
       // invalid entry name
       return false;
@@ -147,6 +175,8 @@ function validateDel (entryName, hash, pkg, sources) {
 function validateLink (entryName, baseHash, links, pkg, sources) {
   switch (entryName) {
     case "badge":
+      return true;
+    case "badgeAnchor":
       return true;
     default:
       // invalid entry name
