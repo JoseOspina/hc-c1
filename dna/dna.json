@@ -76,7 +76,7 @@
           "Exposure": "public"
         },
         {
-          "Name": "listMyContexts",
+          "Name": "getRootContext",
           "CallingType": "json",
           "Exposure": "public"
         },
