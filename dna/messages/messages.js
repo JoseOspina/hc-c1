@@ -58,10 +58,7 @@ function genesis () {
 function validateCommit (entryName, entry, header, pkg, sources) {
   switch (entryName) {
     case "message":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
       return false;
@@ -80,10 +77,7 @@ function validateCommit (entryName, entry, header, pkg, sources) {
 function validatePut (entryName, entry, header, pkg, sources) {
   switch (entryName) {
     case "message":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
       return false;
@@ -103,10 +97,7 @@ function validatePut (entryName, entry, header, pkg, sources) {
 function validateMod (entryName, entry, header, replaces, pkg, sources) {
   switch (entryName) {
     case "message":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
       return false;
@@ -124,10 +115,7 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
 function validateDel (entryName, hash, pkg, sources) {
   switch (entryName) {
     case "message":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
       return false;
@@ -146,10 +134,7 @@ function validateDel (entryName, hash, pkg, sources) {
 function validateLink (entryName, baseHash, links, pkg, sources) {
   switch (entryName) {
     case "message":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
       return false;

@@ -1,0 +1,36 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for messageCreate",
+      "Zome": "messages",
+      "FnName": "messageCreate",
+      "Input": {
+        "text": "Hello world!"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for messageRead",
+      "Zome": "messages",
+      "FnName": "messageRead",
+      "Input": "%h%",
+      "Output": {
+        "text": "Hello world!"
+      }
+    },
+    {
+      "Convey": "auto-generated test for messageUpdate",
+      "Zome": "messages",
+      "FnName": "messageUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for messageDelete",
+      "Zome": "messages",
+      "FnName": "messageDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    }
+  ]
+}

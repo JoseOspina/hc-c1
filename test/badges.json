@@ -1,0 +1,54 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for badgeCreate",
+      "Zome": "badges",
+      "FnName": "badgeCreate",
+      "Input": {
+        "name": "Sustainable",
+        "description": "For being sustainable you must sustain yourself",
+        "expiration_days": 365
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for badgeRead",
+      "Zome": "badges",
+      "FnName": "badgeRead",
+      "Input": "%h%",
+      "Output": {
+        "name": "Sustainable",
+        "description": "For being sustainable you must sustain yourself",
+        "expiration_days": 365
+      }
+    },
+    {
+      "Convey": "auto-generated test for badgeUpdate",
+      "Zome": "badges",
+      "FnName": "badgeUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for badgeDelete",
+      "Zome": "badges",
+      "FnName": "badgeDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for award",
+      "Zome": "badges",
+      "FnName": "award",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for revoke",
+      "Zome": "badges",
+      "FnName": "revoke",
+      "Input": "",
+      "Output": {}
+    }
+  ]
+}
