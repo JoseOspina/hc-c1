@@ -126,6 +126,16 @@
           "DataFormat": "json",
           "Sharing": "public",
           "SchemaFile": "badge.json"
+        },
+        {
+          "Name": "badgeAnchor",
+          "DataFormat": "links",
+          "Sharing": "public"
+        },
+        {
+          "Name": "badgeAward",
+          "DataFormat": "links",
+          "Sharing": "public"
         }
       ],
       "Functions": [
@@ -152,12 +162,12 @@
         {
           "Name": "award",
           "CallingType": "json",
-          "Exposure": ""
+          "Exposure": "public"
         },
         {
           "Name": "revoke",
           "CallingType": "json",
-          "Exposure": ""
+          "Exposure": "public"
         }
       ]
     },

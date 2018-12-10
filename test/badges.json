@@ -1,7 +1,7 @@
 {
   "Tests": [
     {
-      "Convey": "auto-generated test for badgeCreate",
+      "Convey": "I create a badge",
       "Zome": "badges",
       "FnName": "badgeCreate",
       "Input": {
@@ -9,13 +9,13 @@
         "description": "For being sustainable you must sustain yourself",
         "expiration_days": 365
       },
-      "Output": "%h%"
+      "Output": "%h2%"
     },
     {
-      "Convey": "auto-generated test for badgeRead",
+      "Convey": "I read the contents of the badge I just created",
       "Zome": "badges",
       "FnName": "badgeRead",
-      "Input": "%h%",
+      "Input": "%h2%",
       "Output": {
         "name": "Sustainable",
         "description": "For being sustainable you must sustain yourself",
@@ -23,32 +23,57 @@
       }
     },
     {
-      "Convey": "auto-generated test for badgeUpdate",
+      "Convey": "I update the badge I just created",
       "Zome": "badges",
       "FnName": "badgeUpdate",
-      "Input": "%h%",
-      "Output": "%h%"
+      "Input": {
+        "anchorHash": "%h2%",
+        "newContent": {
+          "name": "Sustainable2",
+          "description": "For being sustainable you must sustain yourself",
+          "expiration_days": 365
+        }
+      },
+      "Output": "%r2%"
     },
     {
-      "Convey": "auto-generated test for badgeDelete",
+      "Convey": "I delete the badge",
       "Zome": "badges",
       "FnName": "badgeDelete",
       "Input": "%h%",
       "Output": "%h%"
     },
     {
-      "Convey": "auto-generated test for award",
+      "Convey": "I create a new badge",
+      "Zome": "badges",
+      "FnName": "badgeCreate",
+      "Input": {
+        "name": "Sustainable",
+        "description": "For being sustainable you must sustain yourself",
+        "expiration_days": 365
+      },
+      "Output": "%r2%"
+    },
+
+    {
+      "Convey": "I award this badge to myself",
       "Zome": "badges",
       "FnName": "award",
-      "Input": "",
-      "Output": {}
+      "Input": {
+        "badgeHash": "%h2%",
+        "targetHash": "%agent%"
+      },
+      "Output": true
     },
     {
-      "Convey": "auto-generated test for revoke",
+      "Convey": "I revoke the badge that I awarded",
       "Zome": "badges",
       "FnName": "revoke",
-      "Input": "",
-      "Output": {}
+      "Input": {
+        "badgeHash": "%h2%",
+        "targetHash": "%agent%"
+      },
+      "Output": true
     }
   ]
 }
