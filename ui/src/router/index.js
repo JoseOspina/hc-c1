@@ -16,7 +16,7 @@ export default new Router({
       name: 'ContextsView',
       component: ContextsView,
       children: [{
-        path: 'context/:id',
+        path: 'context/:contextHash',
         name: 'context',
         component: ContextView,
         redirect: { name: 'ContextMessages' },

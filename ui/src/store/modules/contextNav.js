@@ -117,11 +117,27 @@ const actions = {
           })).then( response => {
             if (response.status == 200) {
               console.log(response.data)
-              let subcontexts = response.data
+              let subcontextsData = []
+
+              for (let ix = 0; ix < response.data.length; ix++) {
+                let element = response.data[ix]
+                subcontextsData.push({
+                  coordinate: payload.coord.concat(ix),
+                  inContext: null,
+                  context: {
+                    hash: element.Hash,
+                    name: element.Entry.name
+                  },
+                  subcontextsData: [],
+                  contextsDataSet: false,
+                  expand: true
+                })
+              }
+
               vuexContext.commit('appendContextDataCommit', {
                 contextData: {
                   context: context,
-                  subcontextsData: subcontexts,
+                  subcontextsData: subcontextsData,
                 },
                 coord: payload.coord
               })

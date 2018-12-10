@@ -8,7 +8,7 @@
           #
         </div>
         <div class="title-div cursor-pointer noselect">
-          <router-link tag="span" :to="'/context/' + contextId">
+          <router-link tag="span" :to="'/context/' + contextHash">
             {{ contextName }}
           </router-link>
         </div>
@@ -23,9 +23,19 @@
             class="subcontext-row"
             v-for="subcontextData in subcontextsData"
             :contextData="subcontextData"
-            :key="subcontextData.context.id">
+            :key="subcontextData.context.hash">
           </app-context-nav-item>
+          <div @click="createSubcontextIntention = true" class="w3-row noselect cursor-pointer">
+            <div v-if="!createSubcontextIntention" class="">
+              <small>+ create new</small>
+            </div>
+            <div v-else class="">
+              <input v-model="newSubcontextName" class="w3-input" type="text" name="" value="">
+              <button @click="createSubcontext()" type="button" name="button">save</button>
+            </div>
+          </div>
         </div>
+
       </transition>
     </div>
   </div>
@@ -44,7 +54,9 @@ export default {
 
   data () {
     return {
-      showSubcontexts: true
+      showSubcontexts: true,
+      createSubcontextIntention: false,
+      newSubcontextName: ''
     }
   },
 
@@ -53,8 +65,8 @@ export default {
       return this.contextData.context.name
     },
 
-    contextId () {
-      return this.contextData.context.id
+    contextHash () {
+      return this.contextData.context.hash
     },
 
     subcontextsData () {
@@ -64,6 +76,21 @@ export default {
     hasSubcontexts () {
       return this.subcontextsData.length > 0
     },
+  },
+
+  methods: {
+    createSubcontext () {
+      this.axios.post('/fn/context/contextCreate', JSON.stringify({name: this.newSubcontextName}))
+      .then( response => {
+        let childContextHash = response.data
+        this.axios.post('/fn/context/addContextChild', JSON.stringify({
+          parentContextHash: this.contextHash,
+          childContextHash: childContextHash
+        })).then( response => {
+          console.log(response.data)
+        })
+      })
+    }
   }
 }
 </script>

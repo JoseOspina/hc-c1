@@ -19,12 +19,12 @@ function contextCreate(contextEntry) {
     Links: [{ Base: anchorHash, Link: contextHash, Tag: 'contextAnchor' }]
   });
 
-  return anchorHash;
+  return contextHash;
 }
 
-function contextRead(anchorHash) {
-  var contextHashes = getLinks(anchorHash, 'contextAnchor', { Load: true });
-  return get(contextHashes[0].Hash);
+function contextRead(contextHash) {
+  var context = get(contextHash);
+  return context;
 }
 
 /**

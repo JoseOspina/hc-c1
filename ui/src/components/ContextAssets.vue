@@ -24,22 +24,22 @@ export default {
     return {
       receivers: [
         {
-          name: "guillem",
+          name: "Masia San Antoni`",
           badges: {
-            admin: 9
+            social: 2
           }
         },
         {
-          name: "guillem2",
+          name: "Can Pamplona",
           badges: {
-            admin: 9,
-            sustainable: 9
+            energy: 1,
+            social: 1
           }
         },
         {
-          name: "guillem3",
+          name: "Apartament Centre",
           badges: {
-            sustainable: 9
+            energy: 1
           }
         }
       ]

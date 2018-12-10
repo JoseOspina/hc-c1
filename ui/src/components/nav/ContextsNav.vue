@@ -30,6 +30,9 @@ export default {
         let myRootContextHash = response.data[0].Hash
         console.log('root context received ' + myRootContextHash)
         this.$store.dispatch('resetContextsTree', { baseContextHash: myRootContextHash })
+        this.$router.push({ name: 'ContextAssets', params: {
+          contextHash: myRootContextHash
+        }})
       } else {
         console.log('error getting root context')
         console.log(response)
