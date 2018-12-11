@@ -7,13 +7,13 @@
       "Input": {
         "name": "My cool apartment"
       },
-      "Output": "%h2%"
+      "Output": "%h3%"
     },
     {
       "Convey": "auto-generated test for contextRead",
       "Zome": "context",
       "FnName": "contextRead",
-      "Input": "%h2%",
+      "Input": "%h3%",
       "Output": {
         "name": "My cool apartment"
       }
